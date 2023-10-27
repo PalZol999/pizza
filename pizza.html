@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="pizza.css" />
+    <title>Pizza</title>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $("#submitButton").click(function (e) {
+          e.preventDefault();
+
+          const name = $("#name").val();
+          const telephone = $("#telephone").val();
+          const email = $("#email").val();
+
+          if (name === "" || telephone === "" || email === "") {
+            alert("A név, email és telefonszám kitöltése kötelező.");
+            return;
+          } else if (name.length < 6 || name.indexOf(" ") === -1) {
+            alert(
+              "Név legalább 6 karakter hosszú és legalább 1 szóközből áll!"
+            );
+            return;
+          } else if (email.indexOf("@") === -1) {
+            alert("Valid emailt írjon!");
+            return;
+          } else if (!telephone.startsWith("+") && !/^\d+$/.test(telephone)) {
+            alert("Telefon csak számok és a + jelből állhat");
+            return;
+          }
+
+          $("form").submit();
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Pizza</h1>
+
+      <form action="pizza.php" method="post">
+        <div class="form-group">
+          <label for="name">Név:</label>
+          <input type="text" id="name" name="nev" required />
+        </div>
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required />
+        </div>
+        <div class="form-group">
+          <label for="telephone">Telefon:</label>
+          <input type="tel" id="telephone" name="telefon" required />
+        </div>
+        <div class="form-group">
+          <label for="pizza">Pizza:</label>
+          <select id="pizza" name="pizza">
+            <option value="margarita" selected>Margarita</option>
+            <option value="fromagio">Sajtos</option>
+            <option value="fourseason">Sonkas</option>
+          </select>
+
+          <select id="meret" name="meret">
+            <option value="Small" selected>Kicsi</option>
+            <option value="Large">Nagy</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="extraCheese">Extra sajt:</label>
+          <input
+            type="checkbox"
+            id="extraCheese"
+            name="extraCheese"
+            value="yes"
+          />
+        </div>
+        <input type="submit" value="OK" id="submitButton" />
+      </form>
+    </div>
+  </body>
+</html>

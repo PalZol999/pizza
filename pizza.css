@@ -1,0 +1,76 @@
+body {
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+  background-color: #f2f2f2;
+}
+
+.container {
+  text-align: center;
+  background-color: #f2f2f2;
+  width: 1000px;
+  height: 200px;
+}
+
+h1 {
+  color: green;
+  margin-bottom: 10px;
+}
+
+form {
+  background-color: #ccc;
+  border: 2px solid orange;
+  padding: 10px;
+  text-align: left;
+  border-radius: 0;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+label {
+  width: 50%;
+  margin-right: 10px;
+  text-align: right;
+}
+
+input,
+select {
+  width: 40%;
+  height: 5px;
+  padding: 8px;
+  margin-bottom: 5px;
+  margin-top: 10px;
+  border: 2px solid blue;
+}
+
+select[name="pizza"] {
+  width: 150px;
+}
+
+select[name="meret"] {
+  width: 150px;
+  margin-left: 20px;
+}
+
+input[type="checkbox"] {
+  height: auto;
+  width: auto;
+  margin-top: 10px;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 2px solid grey;
+}
+
+input[type="submit"] {
+  height: 10%;
+  width: 9%;
+  padding: 8px;
+  margin-top: 20px;
+  margin-left: 450px;
+  border: 2px solid grey;
+}
