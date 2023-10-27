@@ -10,30 +10,31 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
       $(document).ready(function () {
-        $("#submitButton").click(function (e) {
-          e.preventDefault();
-
+        $("#submitButton").click(function (event) {
           const name = $("#name").val();
           const telephone = $("#telephone").val();
           const email = $("#email").val();
+          const pizza = $("#pizza").val();
+          const extraSajt = $("#extraSajt").is(":checked");
 
           if (name === "" || telephone === "" || email === "") {
             alert("A név, email és telefonszám kitöltése kötelező.");
-            return;
+            event.preventDefault(); // Prevent form submission
           } else if (name.length < 6 || name.indexOf(" ") === -1) {
             alert(
               "Név legalább 6 karakter hosszú és legalább 1 szóközből áll!"
             );
-            return;
+            event.preventDefault(); // Prevent form submission
           } else if (email.indexOf("@") === -1) {
             alert("Valid emailt írjon!");
-            return;
-          } else if (!telephone.startsWith("+") && !/^\d+$/.test(telephone)) {
-            alert("Telefon csak számok és a + jelből állhat");
-            return;
+            event.preventDefault(); // Prevent form submission
+          } else if (!telephone.startsWith("+")) {
+            alert("Telefon csak a + jellel kezdődhet.");
+            event.preventDefault(); // Prevent form submission
+          } else if ((pizza === "sajtos" || pizza === "sonkas") && extraSajt) {
+            alert("A kiválasztott pizzahoz nem kérhető extra sajt.");
+            event.preventDefault(); // Prevent form submission
           }
-
-          $("form").submit();
         });
       });
     </script>
@@ -59,24 +60,19 @@
           <label for="pizza">Pizza:</label>
           <select id="pizza" name="pizza">
             <option value="margarita" selected>Margarita</option>
-            <option value="fromagio">Sajtos</option>
-            <option value="fourseason">Sonkas</option>
+            <option value="sajtos">Sajtos</option>
+            <option value="sonkas">Sonkas</option>
           </select>
 
           <select id="meret" name="meret">
-            <option value="Small" selected>Kicsi</option>
-            <option value="Large">Nagy</option>
+            <option value="kicsi" selected>Kicsi</option>
+            <option value="nagy">Nagy</option>
           </select>
         </div>
 
         <div class="form-group">
-          <label for="extraCheese">Extra sajt:</label>
-          <input
-            type="checkbox"
-            id="extraCheese"
-            name="extraCheese"
-            value="yes"
-          />
+          <label for="extraSajt">Extra sajt:</label>
+          <input type="checkbox" id="extraSajt" name="extraSajt" value="yes" />
         </div>
         <input type="submit" value="OK" id="submitButton" />
       </form>

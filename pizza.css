@@ -20,8 +20,8 @@ h1 {
 
 form {
   background-color: #ccc;
-  border: 2px solid orange;
-  padding: 10px;
+  border: 2px solid red;
+  padding: 7px;
   text-align: left;
   border-radius: 0;
 }
@@ -38,8 +38,7 @@ label {
   text-align: right;
 }
 
-input,
-select {
+input {
   width: 40%;
   height: 5px;
   padding: 8px;
@@ -48,12 +47,31 @@ select {
   border: 2px solid blue;
 }
 
-select[name="pizza"] {
+select {
   width: 150px;
+  height: 30%;
+
+  margin-bottom: 5px;
+  margin-top: 10px;
+  border: 2px solid blue;
+}
+
+select[name="pizza"] {
+  width: 200px;
+  height: 25px;
+  padding: 1px; /* Increase the padding to create more space around the text */
+  margin-bottom: 5px;
+  margin-top: 10px;
+  border: 2px solid blue;
 }
 
 select[name="meret"] {
-  width: 150px;
+  width: 195px;
+  height: 25px;
+  padding: 1px; /* Match the padding with the "pizza" select */
+  margin-bottom: 5px;
+  margin-top: 10px;
+  border: 2px solid blue;
   margin-left: 20px;
 }
 
@@ -73,4 +91,12 @@ input[type="submit"] {
   margin-top: 20px;
   margin-left: 450px;
   border: 2px solid grey;
+}
+
+.success-text {
+  text-align: center;
+}
+
+.customer-id {
+  text-align: center;
 }
